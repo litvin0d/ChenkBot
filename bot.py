@@ -3,8 +3,8 @@ import os
 from telebot import types
 from selenium import webdriver
 
-# создание бота
-bot = telebot.TeleBot('1818733481:AAGP42fKzGbyIX4tby8eJiAjA6ujw-3fGGc', parse_mode=None)
+# создание бота (токен бота указать в ковычках)
+bot = telebot.TeleBot('TOKEN', parse_mode=None)
 
 # настройка браузера для работы в headless режиме
 options = webdriver.ChromeOptions()
