@@ -1,2 +1,2 @@
-TOKEN = '1818733481:AAGP42fKzGbyIX4tby8eJiAjA6ujw-3fGGc'
-admins = ['424157124']
+TOKEN = ''
+admins = ['']

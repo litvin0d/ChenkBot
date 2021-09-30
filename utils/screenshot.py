@@ -1,4 +1,4 @@
-async def get_screenshot(uid, url):
+async def send_screenshot(uid, url):
     from selenium import webdriver
     import os
     from loader import bot
