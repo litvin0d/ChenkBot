@@ -4,7 +4,7 @@ async def send_screenshot(uid, url):
     from loader import bot
 
     # настройка браузера для работы в автономном режиме
-    options = webdriver.ChromeOptions()
+    options = webdriver.FirefoxOptions()
     options.add_argument('--headless')
     options.add_argument('--disable-gpu')
     options.add_argument('--disable-dev-shm-usage')
@@ -12,8 +12,8 @@ async def send_screenshot(uid, url):
 
     # создание, отправка и удаление скриншота
     photo_path = str(uid) + '.png'
-    driver = webdriver.Chrome(executable_path=r'C:\Program Files (x86)\ChromeDriver\chromedriver.exe', options=options)
-    driver.set_window_size(900, 900)
+    driver = webdriver.Firefox(executable_path=r'C:\Program Files (x86)\Geckodriver\geckodriver.exe', options=options)
+    driver.set_window_size(1000, 1000)
     driver.get(url)
     driver.save_screenshot(photo_path)
     await bot.send_photo(uid, photo=open(photo_path, 'rb'))
