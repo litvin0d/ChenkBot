@@ -16,5 +16,5 @@ async def list_of_years(message: Message):
     if message.text == '🗓 Расписание пар 🗓':
         await message.answer('На каком ты курсе?', reply_markup=courses)
 
-    elif message.text == '🔙 Выбрать курс 🔙':
+    if message.text == '🔙 Выбрать курс 🔙':
         await message.answer('На каком ты курсе?', reply_markup=courses)

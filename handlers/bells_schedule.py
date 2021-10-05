@@ -12,9 +12,10 @@ async def bells_schedule(message: Message):
         back = KeyboardButton('🔙 Назад 🔙')
         keyboard.add(monday_friday, saturday, back)
         await message.answer('Какой день недели?', reply_markup=keyboard)
+        await message.answer('<b>Важно:</b> бот не учитывает изменения в расписании звонков.')
 
-    elif message.text == '⏳ Понедельник-пятница ⏳':
+    if message.text == '⏳ Понедельник-пятница ⏳':
         await bot.send_photo(message.chat.id, photo=open('img/monday_friday.jpeg', 'rb'))
 
-    elif message.text == '⏳ Суббота ⏳':
+    if message.text == '⏳ Суббота ⏳':
         await bot.send_photo(message.chat.id, photo=open('img/saturday.jpeg', 'rb'))

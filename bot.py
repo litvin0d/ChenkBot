@@ -15,4 +15,4 @@ if __name__ == '__main__':
     from handlers.support import dp
     from handlers.error import dp
 
-    executor.start_polling(dp, on_startup=start_message, on_shutdown=shutdown_message)
+    executor.start_polling(dp, on_startup=start_message, on_shutdown=shutdown_message, skip_updates=True)
