@@ -10,7 +10,7 @@ menu = ReplyKeyboardMarkup(resize_keyboard=True, row_width=1)
 couples = KeyboardButton('🗓 Расписание пар 🗓')
 bells = KeyboardButton('⏳ Расписание звонков ⏳')
 videcam = KeyboardButton('📸 ЧЭнК Онлайн 📸')
-support = KeyboardButton('✨ Поддержка ✨')
+support = KeyboardButton('✨ Поддержать бота ✨')
 # about = KeyboardButton('🤖 О боте 🤖')
 # добавление кнопок в клавиатуру
 menu.add(couples, bells, videcam, support)
