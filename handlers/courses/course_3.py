@@ -23,38 +23,37 @@ async def second_course(message: Message):
         await message.answer('В какой ты группе?', reply_markup=groups)
 
 
-@dp.message_handler(text=['👷‍♂ ТТО 1-19 👷‍♂',
-                          '👨‍🔧 ЭССиС 2-19 👨‍🔧', '👨‍🔧 ЭССиС 3-19 👨‍🔧',
-                          '👨‍🔧 ЭС 4-19 👨‍🔧', '👨‍🔧 ЭП 5-19 👨‍🔧',
-                          '👨‍💼 СА 6-19 👨‍💼', '👨‍💻 ИСП 7-19 👨‍💻',
-                          '👨‍💻 ИСП 8-19 👨‍💻'])
+@dp.message_handler(text=['👷‍♂ ТТО 1-19 👷‍♂', '👨‍🔧 ЭССиС 2-19 👨‍🔧',
+                          '👨‍🔧 ЭССиС 3-19 👨‍🔧', '👨‍🔧 ЭС 4-19 👨‍🔧',
+                          '👨‍🔧 ЭП 5-19 👨‍🔧', '👨‍💼 СА 6-19 👨‍💼',
+                          '👨‍💻 ИСП 7-19 👨‍💻', '👨‍💻 ИСП 8-19 👨‍💻'])
 async def third_groups(message: Message):
     try:
         await dp.throttle(rate=3, key='group')
     except Throttled:
-        await message.answer('Не флуди!')
+        return
     else:
         uid = message.from_user.id
         if message.text == '👷‍♂ ТТО 1-19 👷‍♂':
-            await send_screenshot(uid, course_3[1_19])
+            await send_screenshot(uid, course_3[1])
 
         if message.text == '👨‍🔧 ЭССиС 2-19 👨‍🔧':
-            await send_screenshot(uid, course_3[2_19])
+            await send_screenshot(uid, course_3[2])
 
         if message.text == '👨‍🔧 ЭССиС 3-19 👨‍🔧':
-            await send_screenshot(uid, course_3[3_19])
+            await send_screenshot(uid, course_3[3])
 
         if message.text == '👨‍🔧 ЭС 4-19 👨‍🔧':
-            await send_screenshot(uid, course_3[4_19])
+            await send_screenshot(uid, course_3[4])
 
         if message.text == '👨‍🔧 ЭП 5-19 👨‍🔧':
-            await send_screenshot(uid, course_3[5_19])
+            await send_screenshot(uid, course_3[5])
 
         if message.text == '👨‍💼 СА 6-19 👨‍💼':
-            await send_screenshot(uid, course_3[6_19])
+            await send_screenshot(uid, course_3[6])
 
         if message.text == '👨‍💻 ИСП 7-19 👨‍💻':
-            await send_screenshot(uid, course_3[7_19])
+            await send_screenshot(uid, course_3[7])
 
         if message.text == '👨‍💻 ИСП 8-19 👨‍💻':
-            await send_screenshot(uid, course_3[8_19])
+            await send_screenshot(uid, course_3[8])
