@@ -1,5 +1,4 @@
 # ChenkBot
-___
 
 ### Описание
 **ChenkBot** - это Telegram-бот, позволяющий смотреть
@@ -56,7 +55,9 @@ os.remove(photo_path)  # удаление скриншта
 Также для более углублённой работы с асинхронностью используется
 библиотека **Asyncio**.
 ___
+
 ###Установка библиотек и настройка бота
+
 Прежде чем начать работать с ботом, необходимо установить ряд
 библиотек:
 * `pip install aiogramm`
@@ -85,5 +86,6 @@ admins = ['admin_id']
 driver = webdriver.Chrome(executable_path=r'C:/Program Files (x86)/ChromeDriver/chromedriver.exe', options=options)
 ```
 ___
+
 *Токен бота, который вы могли заметить
 в предыдущих коммитах, больше не актуален.*
