@@ -11,12 +11,10 @@ menu = ReplyKeyboardMarkup(resize_keyboard=True, row_width=1)
 # создание кнопок
 couples = KeyboardButton('🗓 Расписание пар 🗓')
 bells = KeyboardButton('⏳ Расписание звонков ⏳')
-videcam = KeyboardButton('📸 ЧЭнК Онлайн 📸')
-support = KeyboardButton('✨ Поддержать бота ✨')
-# about = KeyboardButton('🤖 О боте 🤖')
+video = KeyboardButton('📸 ЧЭнК Онлайн 📸')
+about = KeyboardButton('✨ О боте ✨')
 # добавление кнопок в клавиатуру
-menu.add(couples, bells, videcam, support)
-# from utils.throttling import rate_limit
+menu.add(couples, bells, video, about)
 
 
 # функция ответа на команду /start
@@ -25,7 +23,8 @@ async def welcome(message: Message):
     text = '👋 <b>Привет!</b> 👋\n' \
            'ChenkBot поможет тебе быстро узнать актуальное ' \
            'расписание пар и звонков. Больше не нужно тратить время и заходить на ' \
-           'сайт ЧЭнКа или смотреть расписание на стэнде.'
+           'сайт ЧЭнКа или смотреть расписание на стэнде.\n' \
+           'Группа в ТГ: @chenk_chat'
     await message.answer(text=text, reply_markup=menu)
 
 

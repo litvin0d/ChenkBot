@@ -1,2 +1,8 @@
 .idea
 geckodriver.log
+
+__pycache__
+data/__pycache__
+handlers/__pycache__
+handlers/courses/__pycache__
+utils/__pycache__

@@ -11,8 +11,8 @@ if __name__ == '__main__':
     from handlers.courses.course_3 import dp
     from handlers.courses.course_4 import dp
     from handlers.chenk_online import dp
-    from handlers.bells_schedule import dp
-    from handlers.support import dp
+    from handlers.rings import dp
+    from handlers.about import dp
     from handlers.error import dp
 
     executor.start_polling(dp, on_startup=start_message, on_shutdown=shutdown_message, skip_updates=True)
