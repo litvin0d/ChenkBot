@@ -14,6 +14,7 @@ async def send_screenshot(uid, url):
     import os
     from loader import bot
 
+    await bot.send_message(uid, 'Секунду...')
     # создание, отправка и удаление скриншота
     photo_path = f'{str(uid)}.png'
     driver.get(url)

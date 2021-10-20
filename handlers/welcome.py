@@ -2,8 +2,6 @@
 from aiogram.types import Message, ReplyKeyboardMarkup, KeyboardButton
 
 # локальные импорты
-from aiogram.utils.exceptions import Throttled
-
 from loader import dp
 
 # объявление клавиатуры
