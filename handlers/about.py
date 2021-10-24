@@ -4,7 +4,7 @@ from loader import dp
 
 
 @dp.message_handler(text='✨ О боте ✨')
-async def support(message: Message):
+async def about(message: Message):
     if message.text == '✨ О боте ✨':
         await message.answer('Бот написан на языке Python. Для работы самого бота '
                              'использована библиотека aiogram, для получения и отправки скриншота '

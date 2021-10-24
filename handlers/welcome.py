@@ -1,7 +1,5 @@
-# импорты из библиотек
 from aiogram.types import Message, ReplyKeyboardMarkup, KeyboardButton
 
-# локальные импорты
 from loader import dp
 
 # объявление клавиатуры

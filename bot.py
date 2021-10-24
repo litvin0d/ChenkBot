@@ -1,9 +1,8 @@
 from aiogram import executor
 
-# запуск бота
 if __name__ == '__main__':
     # импорт всех хэндлеров
-    from handlers.for_admin import start_message
+    from handlers.for_admin import for_admin
     from handlers.welcome import dp
     from handlers.courses.list import dp
     from handlers.courses.course_1 import dp
@@ -15,4 +14,5 @@ if __name__ == '__main__':
     from handlers.about import dp
     from handlers.error import dp
 
-    executor.start_polling(dp, on_startup=start_message, skip_updates=True)
+    # запуск бота
+    executor.start_polling(dp, on_startup=for_admin, skip_updates=True)

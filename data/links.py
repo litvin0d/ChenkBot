@@ -1,3 +1,5 @@
+# файл с ссылками на сайт c расписанием пар
+
 course_1 = {
     1: 'https://pronew.chenk.ru/blocks/manage_groups/website/view.php?gr=274&dep=3',
     2: 'https://pronew.chenk.ru/blocks/manage_groups/website/view.php?gr=275&dep=3',

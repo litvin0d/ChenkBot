@@ -7,7 +7,7 @@ from data.links import course_3
 
 
 @dp.message_handler(text=['3⃣ Третий курс 3⃣'])
-async def second_course(message: Message):
+async def third_course(message: Message):
     if message.text == '3⃣ Третий курс 3⃣':
         groups = ReplyKeyboardMarkup(resize_keyboard=True, row_width=2)
         gr1_19 = KeyboardButton('👷‍♂ ТТО 1-19 👷‍♂')
@@ -28,6 +28,7 @@ async def second_course(message: Message):
                           '👨‍🔧 ЭП 5-19 👨‍🔧', '👨‍💼 СА 6-19 👨‍💼',
                           '👨‍💻 ИСП 7-19 👨‍💻', '👨‍💻 ИСП 8-19 👨‍💻'])
 async def third_groups(message: Message):
+    # реализация антифлуда в виде блоков try/except/else
     try:
         await dp.throttle(rate=3, key='group')
     except Throttled:

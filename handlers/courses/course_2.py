@@ -28,6 +28,7 @@ async def second_course(message: Message):
                           '👨‍🔧 ЭП 5-20 👨‍🔧', '👨‍💼 СА 6-20 👨‍💼',
                           '👨‍💻 ИСП 7-20 👨‍💻', '⭐ ИСП 8-20 ⭐'])
 async def second_groups(message: Message):
+    # реализация антифлуда в виде блоков try/except/else
     try:
         await dp.throttle(rate=3, key='group')
     except Throttled:

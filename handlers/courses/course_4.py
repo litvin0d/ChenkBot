@@ -7,7 +7,7 @@ from data.links import course_4
 
 
 @dp.message_handler(text=['4⃣ Четвёртый курс 4⃣'])
-async def second_year(message: Message):
+async def fourth_year(message: Message):
     if message.text == '4⃣ Четвёртый курс 4⃣':
         groups = ReplyKeyboardMarkup(resize_keyboard=True, row_width=2)
         gr1_18 = KeyboardButton('👷‍♂ ТТО 1-18 👷‍♂')
@@ -27,7 +27,8 @@ async def second_year(message: Message):
                           '👨‍🔧 ЭП 3-18 👨‍🔧', '👨‍🔧 ЭС 4-18 👨‍🔧',
                           '👨‍🔧 ЭП 5-18 👨‍🔧', '👨‍💼 СА 6-18 👨‍💼',
                           '👨‍💻 ИСП 7-18 👨‍💻', '👨‍💻 ИСП 8-18 👨‍💻'])
-async def second_year(message: Message):
+async def fourth_year(message: Message):
+    # реализация антифлуда в виде блоков try/except/else
     try:
         await dp.throttle(rate=3, key='group')
     except Throttled:

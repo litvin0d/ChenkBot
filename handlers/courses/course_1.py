@@ -30,6 +30,7 @@ async def first_course(message: Message):
                           '👨‍💻 ИСП 7-21 👨‍💻', '👨‍💻 ИСП 8-21 👨‍💻',
                           '👨‍💻 ИСП 9-21 👨‍💻'])
 async def first_groups(message: Message):
+    # реализация антифлуда в виде блоков try/except/else
     try:
         await dp.throttle(rate=3, key='group')
     except Throttled:

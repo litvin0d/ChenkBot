@@ -1,13 +1,15 @@
-from aiogram.types import Message
 from time import sleep
-from loader import bot, dp
+from aiogram.types import Message
 from aiogram.utils.exceptions import Throttled
+
+from loader import bot, dp
 
 
 @dp.message_handler(text=['⏳ Расписание звонков ⏳'])
 async def rings(message: Message):
+    # реализация антифлуда в виде блоков try/except/else
     try:
-        await dp.throttle(rate=3, key='group')
+        await dp.throttle(rate=3, key='rings')
     except Throttled:
         return
     else:
