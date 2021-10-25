@@ -14,7 +14,7 @@ async def send_screenshot(uid, url):
     import os
     from loader import bot
 
-    await bot.send_message(uid, 'Секунду...')
+    await bot.send_message(uid, '<i>Секунду...</i>')
     driver.get(url)
 
     # определение размеров скриншота

@@ -2,6 +2,7 @@ from aiogram.types import Message, ReplyKeyboardMarkup, KeyboardButton
 from aiogram.utils.exceptions import Throttled
 
 from loader import dp
+from utils import sql
 from utils.screenshot import send_screenshot
 from data.links import course_2
 
@@ -37,24 +38,40 @@ async def second_groups(message: Message):
         uid = message.from_user.id
         if message.text == '👷‍♂ ТТО 1-20 👷‍♂':
             await send_screenshot(uid, course_2[1])
+            user = [message.from_user.id, message.from_user.username, message.from_user.full_name]
+            await sql.sql_add(user)
 
         if message.text == '👨‍🔧 ЭССиС 2-20 👨‍🔧':
             await send_screenshot(uid, course_2[2])
+            user = [message.from_user.id, message.from_user.username, message.from_user.full_name]
+            await sql.sql_add(user)
 
         if message.text == '👨‍🔧 ЭССиС 3-20 👨‍🔧':
             await send_screenshot(uid, course_2[3])
+            user = [message.from_user.id, message.from_user.username, message.from_user.full_name]
+            await sql.sql_add(user)
 
         if message.text == '👨‍🔧 ЭС 4-20 👨‍🔧':
             await send_screenshot(uid, course_2[4])
+            user = [message.from_user.id, message.from_user.username, message.from_user.full_name]
+            await sql.sql_add(user)
 
         if message.text == '👨‍🔧 ЭП 5-20 👨‍🔧':
             await send_screenshot(uid, course_2[5])
+            user = [message.from_user.id, message.from_user.username, message.from_user.full_name]
+            await sql.sql_add(user)
 
         if message.text == '👨‍💼 СА 6-20 👨‍💼':
             await send_screenshot(uid, course_2[6])
+            user = [message.from_user.id, message.from_user.username, message.from_user.full_name]
+            await sql.sql_add(user)
 
         if message.text == '👨‍💻 ИСП 7-20 👨‍💻':
             await send_screenshot(uid, course_2[7])
+            user = [message.from_user.id, message.from_user.username, message.from_user.full_name]
+            await sql.sql_add(user)
 
         if message.text == '⭐ ИСП 8-20 ⭐':
             await send_screenshot(uid, course_2[8])
+            user = [message.from_user.id, message.from_user.username, message.from_user.full_name]
+            await sql.sql_add(user)

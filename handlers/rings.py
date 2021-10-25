@@ -3,6 +3,7 @@ from aiogram.types import Message
 from aiogram.utils.exceptions import Throttled
 
 from loader import bot, dp
+from utils import sql
 
 
 @dp.message_handler(text=['⏳ Расписание звонков ⏳'])
@@ -19,3 +20,6 @@ async def rings(message: Message):
             await bot.send_photo(message.chat.id, photo=open('img/monday_friday.jpeg', 'rb'))
             sleep(0.25)
             await bot.send_photo(message.chat.id, photo=open('img/saturday.jpeg', 'rb'))
+
+    user = [message.from_user.id, message.from_user.username, message.from_user.full_name]
+    await sql.sql_add(user)

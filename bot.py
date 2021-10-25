@@ -2,7 +2,7 @@ from aiogram import executor
 
 if __name__ == '__main__':
     # импорт всех хэндлеров
-    from handlers.for_admin import for_admin
+    from handlers.on_startup import for_admin
     from handlers.welcome import dp
     from handlers.courses.list import dp
     from handlers.courses.course_1 import dp
