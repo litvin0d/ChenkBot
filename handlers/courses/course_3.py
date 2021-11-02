@@ -2,7 +2,6 @@ from aiogram.types import Message, ReplyKeyboardMarkup, KeyboardButton
 from aiogram.utils.exceptions import Throttled
 
 from loader import dp
-from utils import sql
 from utils.screenshot import send_screenshot
 from data.links import course_3
 
@@ -19,8 +18,8 @@ async def third_course(message: Message):
         gr6_19 = KeyboardButton('👨‍💼 СА 6-19 👨‍💼')
         gr7_19 = KeyboardButton('👨‍💻 ИСП 7-19 👨‍💻')
         gr8_19 = KeyboardButton('👨‍💻 ИСП 8-19 👨‍💻')
-        back_to_courses = KeyboardButton('🔙 Выбрать курс 🔙')
-        groups.add(gr1_19, gr2_19, gr3_19, gr4_19, gr5_19, gr6_19, gr7_19, gr8_19, back_to_courses)
+        back = KeyboardButton('🔙 Назад 🔙')
+        groups.add(gr1_19, gr2_19, gr3_19, gr4_19, gr5_19, gr6_19, gr7_19, gr8_19, back)
         await message.answer('В какой ты группе?', reply_markup=groups)
 
 
@@ -35,43 +34,32 @@ async def third_groups(message: Message):
     except Throttled:
         return
     else:
-        uid = message.from_user.id
+        user_data = [
+            message.from_user.id,
+            message.from_user.username,
+            message.from_user.full_name
+        ]
+
         if message.text == '👷‍♂ ТТО 1-19 👷‍♂':
-            await send_screenshot(uid, course_3[1])
-            user = [message.from_user.id, message.from_user.username, message.from_user.full_name]
-            await sql.sql_add(user)
+            await send_screenshot(user_data, course_3[1])
 
         if message.text == '👨‍🔧 ЭССиС 2-19 👨‍🔧':
-            await send_screenshot(uid, course_3[2])
-            user = [message.from_user.id, message.from_user.username, message.from_user.full_name]
-            await sql.sql_add(user)
+            await send_screenshot(user_data, course_3[2])
 
         if message.text == '👨‍🔧 ЭССиС 3-19 👨‍🔧':
-            await send_screenshot(uid, course_3[3])
-            user = [message.from_user.id, message.from_user.username, message.from_user.full_name]
-            await sql.sql_add(user)
+            await send_screenshot(user_data, course_3[3])
 
         if message.text == '👨‍🔧 ЭС 4-19 👨‍🔧':
-            await send_screenshot(uid, course_3[4])
-            user = [message.from_user.id, message.from_user.username, message.from_user.full_name]
-            await sql.sql_add(user)
+            await send_screenshot(user_data, course_3[4])
 
         if message.text == '👨‍🔧 ЭП 5-19 👨‍🔧':
-            await send_screenshot(uid, course_3[5])
-            user = [message.from_user.id, message.from_user.username, message.from_user.full_name]
-            await sql.sql_add(user)
+            await send_screenshot(user_data, course_3[5])
 
         if message.text == '👨‍💼 СА 6-19 👨‍💼':
-            await send_screenshot(uid, course_3[6])
-            user = [message.from_user.id, message.from_user.username, message.from_user.full_name]
-            await sql.sql_add(user)
+            await send_screenshot(user_data, course_3[6])
 
         if message.text == '👨‍💻 ИСП 7-19 👨‍💻':
-            await send_screenshot(uid, course_3[7])
-            user = [message.from_user.id, message.from_user.username, message.from_user.full_name]
-            await sql.sql_add(user)
+            await send_screenshot(user_data, course_3[7])
 
         if message.text == '👨‍💻 ИСП 8-19 👨‍💻':
-            await send_screenshot(uid, course_3[8])
-            user = [message.from_user.id, message.from_user.username, message.from_user.full_name]
-            await sql.sql_add(user)
+            await send_screenshot(user_data, course_3[8])

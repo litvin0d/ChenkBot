@@ -10,11 +10,12 @@ driver = webdriver.Chrome(executable_path=r'C:/Program Files (x86)/ChromeDriver/
 
 
 # создание, отправка и последующее удаление скриншота
-async def send_screenshot(uid, url):
+async def send_screenshot(user_data, url):
     import os
+    from utils import database
     from loader import bot
 
-    await bot.send_message(uid, '<i>Секунду...</i>')
+    await bot.send_message(user_data[0], '<i>Секунду...</i>')
     driver.get(url)
 
     # определение размеров скриншота
@@ -23,7 +24,10 @@ async def send_screenshot(uid, url):
     driver.set_window_size(1000, size)
 
     # сохранение, отправка и удаление
-    photo_path = f'{str(uid)}.png'
+    photo_path = str(user_data[0]) + '.png'
     driver.save_screenshot(photo_path)
-    await bot.send_photo(uid, photo=open(photo_path, 'rb'))
+    await bot.send_photo(user_data[0], photo=open(photo_path, 'rb'))
     os.remove(photo_path)
+
+    # запись пользователя в базу
+    await database.db_add(user_data)

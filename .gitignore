@@ -6,3 +6,6 @@ data/__pycache__
 handlers/__pycache__
 handlers/courses/__pycache__
 utils/__pycache__
+
+users.db
+rings_changes.txt

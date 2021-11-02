@@ -3,7 +3,6 @@ from aiogram.types import Message
 from aiogram.utils.exceptions import Throttled
 
 from loader import bot, dp
-from utils import sql
 
 
 @dp.message_handler(text=['⏳ Расписание звонков ⏳'])
@@ -15,11 +14,12 @@ async def rings(message: Message):
         return
     else:
         if message.text == '⏳ Расписание звонков ⏳':
-            await message.answer('Важно: бот не учитывает изменения в расписании звонков.')
-            sleep(0.25)
-            await bot.send_photo(message.chat.id, photo=open('img/monday_friday.jpeg', 'rb'))
-            sleep(0.25)
-            await bot.send_photo(message.chat.id, photo=open('img/saturday.jpeg', 'rb'))
-
-    user = [message.from_user.id, message.from_user.username, message.from_user.full_name]
-    await sql.sql_add(user)
+            # проверка на наличие изменений
+            with open('D:/Code/ChenkBot/rings_changes.txt', 'r') as file:
+                photo_id = file.read()
+                if photo_id == '':
+                    await bot.send_photo(message.chat.id, photo=open('img/monday_friday.jpeg', 'rb'))
+                    sleep(.10)
+                    await bot.send_photo(message.chat.id, photo=open('img/saturday.jpeg', 'rb'))
+                else:
+                    await bot.send_photo(message.chat.id, photo_id, '<i>Расписание звонков изменено.</i>')
