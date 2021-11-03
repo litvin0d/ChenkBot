@@ -2,8 +2,8 @@ from aiogram.types import Message, ReplyKeyboardMarkup, KeyboardButton
 from aiogram.utils.exceptions import Throttled
 
 from loader import dp
-from utils.screenshot import send_screenshot
 from data.links import course_1
+from utils.screenshot import send_screenshot
 
 
 @dp.message_handler(text=['1⃣ Первый курс 1⃣'])
@@ -36,35 +36,29 @@ async def first_groups(message: Message):
     except Throttled:
         return
     else:
-        user_data = [
-            message.from_user.id,
-            message.from_user.username,
-            message.from_user.full_name
-        ]
-
         if message.text == '👷‍♂ ТТО 1-21 👷‍♂':
-            await send_screenshot(user_data, course_1[1])
+            await send_screenshot(message.from_user.id, course_1[1])
 
         if message.text == '👨‍🔧 ЭССиС 2-21 👨‍🔧':
-            await send_screenshot(user_data, course_1[2])
+            await send_screenshot(message.from_user.id, course_1[2])
 
         if message.text == '👨‍🔧 ЭССиС 3-21 👨‍🔧':
-            await send_screenshot(user_data, course_1[3])
+            await send_screenshot(message.from_user.id, course_1[3])
 
         if message.text == '👨‍🔧 ЭС 4-21 👨‍🔧':
-            await send_screenshot(user_data, course_1[4])
+            await send_screenshot(message.from_user.id, course_1[4])
 
         if message.text == '👨‍🔧 ЭП 5-21 👨‍🔧':
-            await send_screenshot(user_data, course_1[5])
+            await send_screenshot(message.from_user.id, course_1[5])
 
         if message.text == '👨‍💼 СА 6-21 👨‍💼':
-            await send_screenshot(user_data, course_1[6])
+            await send_screenshot(message.from_user.id, course_1[6])
 
         if message.text == '👨‍💻 ИСП 7-21 👨‍💻':
-            await send_screenshot(user_data, course_1[7])
+            await send_screenshot(message.from_user.id, course_1[7])
 
         if message.text == '👨‍💻 ИСП 8-21 👨‍💻':
-            await send_screenshot(user_data, course_1[8])
+            await send_screenshot(message.from_user.id, course_1[8])
 
         if message.text == '👨‍💻 ИСП 9-21 👨‍💻':
-            await send_screenshot(user_data, course_1[9])
+            await send_screenshot(message.from_user.id, course_1[9])

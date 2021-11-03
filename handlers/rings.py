@@ -18,8 +18,8 @@ async def rings(message: Message):
             with open('D:/Code/ChenkBot/rings_changes.txt', 'r') as file:
                 photo_id = file.read()
                 if photo_id == '':
-                    await bot.send_photo(message.chat.id, photo=open('img/monday_friday.jpeg', 'rb'))
+                    await bot.send_photo(message.chat.id, open('img/monday_friday.jpeg', 'rb'), 'Понедельник-пятница.')
                     sleep(.10)
-                    await bot.send_photo(message.chat.id, photo=open('img/saturday.jpeg', 'rb'))
+                    await bot.send_photo(message.chat.id, open('img/saturday.jpeg', 'rb'), 'Суббота.')
                 else:
                     await bot.send_photo(message.chat.id, photo_id, '<i>Расписание звонков изменено.</i>')

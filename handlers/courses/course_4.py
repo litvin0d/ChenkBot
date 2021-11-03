@@ -2,8 +2,8 @@ from aiogram.types import Message, ReplyKeyboardMarkup, KeyboardButton
 from aiogram.utils.exceptions import Throttled
 
 from loader import dp
-from utils.screenshot import send_screenshot
 from data.links import course_4
+from utils.screenshot import send_screenshot
 
 
 @dp.message_handler(text=['4⃣ Четвёртый курс 4⃣'])
@@ -34,32 +34,26 @@ async def fourth_year(message: Message):
     except Throttled:
         return
     else:
-        user_data = [
-            message.from_user.id,
-            message.from_user.username,
-            message.from_user.full_name
-        ]
-
         if message.text == '👷‍♂ ТТО 1-18 👷‍♂':
-            await send_screenshot(user_data, course_4[1])
+            await send_screenshot(message.from_user.id, course_4[1])
 
         if message.text == '👨‍🔧 ЭССиС 2-18 👨‍🔧':
-            await send_screenshot(user_data, course_4[2])
+            await send_screenshot(message.from_user.id, course_4[2])
 
         if message.text == '👨‍🔧 ЭП 3-18 👨‍🔧':
-            await send_screenshot(user_data, course_4[3])
+            await send_screenshot(message.from_user.id, course_4[3])
 
         if message.text == '👨‍🔧 ЭС 4-18 👨‍🔧':
-            await send_screenshot(user_data, course_4[4])
+            await send_screenshot(message.from_user.id, course_4[4])
 
         if message.text == '👨‍🔧 ЭП 5-18 👨‍🔧':
-            await send_screenshot(user_data, course_4[5])
+            await send_screenshot(message.from_user.id, course_4[5])
 
         if message.text == '👨‍💼 СА 6-18 👨‍💼':
-            await send_screenshot(user_data, course_4[6])
+            await send_screenshot(message.from_user.id, course_4[6])
 
         if message.text == '👨‍💻 ИСП 7-18 👨‍💻':
-            await send_screenshot(user_data, course_4[7])
+            await send_screenshot(message.from_user.id, course_4[7])
 
         if message.text == '👨‍💻 ИСП 8-18 👨‍💻':
-            await send_screenshot(user_data, course_4[8])
+            await send_screenshot(message.from_user.id, course_4[8])

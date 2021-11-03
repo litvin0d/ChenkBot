@@ -10,12 +10,13 @@ driver = webdriver.Chrome(executable_path=r'C:/Program Files (x86)/ChromeDriver/
 
 
 # создание, отправка и последующее удаление скриншота
-async def send_screenshot(user_data, url):
+async def send_screenshot(uid, url):
     import os
-    from utils import database
+    from aiogram.types import InlineKeyboardMarkup, InlineKeyboardButton
+
     from loader import bot
 
-    await bot.send_message(user_data[0], '<i>Секунду...</i>')
+    await bot.send_message(uid, '<i>Секунду...</i>')
     driver.get(url)
 
     # определение размеров скриншота
@@ -23,11 +24,28 @@ async def send_screenshot(user_data, url):
     size = driver.execute_script('return document.documentElement.scrollHeight')
     driver.set_window_size(1000, size)
 
-    # сохранение, отправка и удаление
-    photo_path = str(user_data[0]) + '.png'
-    driver.save_screenshot(photo_path)
-    await bot.send_photo(user_data[0], photo=open(photo_path, 'rb'))
-    os.remove(photo_path)
+    # функция получения url предытущей недели
+    def prev_url():
+        driver.find_element_by_partial_link_text('←').click()
+        cur_url = driver.current_url
+        return cur_url
 
-    # запись пользователя в базу
-    await database.db_add(user_data)
+    # функция получнения url предыдущей недели
+    def next_url():
+        driver.find_element_by_partial_link_text('→').click()
+        driver.find_element_by_partial_link_text('→').click()
+        cur_url = driver.current_url
+        return cur_url
+
+    # создание inline-клавиатуры для прикрепления под последуйщей фотографией
+    switch_kb = InlineKeyboardMarkup(row_width=2)
+    prev_btn = InlineKeyboardButton(text='Предыдущая', url=prev_url())
+    next_btn = InlineKeyboardButton(text='Следующая', url=next_url())
+    switch_kb.add(prev_btn, next_btn)
+
+    # сохранение, отправка и удаление
+    driver.get(url)
+    photo_path = str(uid) + '.png'
+    driver.save_screenshot(photo_path)
+    await bot.send_photo(uid, photo=open(photo_path, 'rb'), reply_markup=switch_kb)
+    os.remove(photo_path)
