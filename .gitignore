@@ -1,11 +1,13 @@
-.idea
-geckodriver.log
+/.idea
+/.vscode
+/geckodriver.log
 
-__pycache__
-data/__pycache__
-handlers/__pycache__
-handlers/courses/__pycache__
-utils/__pycache__
+/__pycache__
+/data/__pycache__
+/handlers/__pycache__
+/handlers/courses/__pycache__
+/utils/__pycache__
+/venv
 
-users.db
-rings_changes.txt
+/users.db
+/rings_changes.txt

@@ -15,7 +15,7 @@ async def rings(message: Message):
     else:
         if message.text == '⏳ Расписание звонков ⏳':
             # проверка на наличие изменений
-            with open('D:/Code/ChenkBot/rings_changes.txt', 'r') as file:
+            with open('../rings_changes.txt', 'r') as file:
                 photo_id = file.read()
                 if photo_id == '':
                     await bot.send_photo(message.chat.id, open('img/monday_friday.jpeg', 'rb'), 'Понедельник-пятница.')

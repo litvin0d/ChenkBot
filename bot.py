@@ -6,8 +6,6 @@ if __name__ == '__main__':
     from handlers.welcome import dp
 
     from handlers.admin_panel.admin_panel import dp
-    from handlers.admin_panel import mailing
-    mailing.register_handlers_mailing(dp)
     from handlers.admin_panel import rings_changes
     rings_changes.register_handlers_admin(dp)
     from handlers.admin_panel.users_num import dp

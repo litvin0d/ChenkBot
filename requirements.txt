@@ -1,2 +1,2 @@
-selenium~=3.141.0
-aiogram~=2.14.3
+selenium~=4.1.0
+aiogram~=2.17.1

@@ -4,6 +4,8 @@ from aiogram.dispatcher import FSMContext
 from aiogram.dispatcher.filters import Text
 from aiogram.dispatcher.filters.state import StatesGroup, State
 
+from data.config import admins
+
 
 # панель управление изменениями
 async def rings_changes(message: Message):
@@ -21,13 +23,16 @@ class FSMAdmin(StatesGroup):
 
 # активация машины состояний
 async def upload_changes(message: Message):
-    await FSMAdmin.photo.set()
-    await message.answer('Отправь фото изменений:')
+    if message.from_user.id in admins:
+        await FSMAdmin.photo.set()
+        await message.answer('Отправь фото изменений:')
+    else:
+        await message.answer('Тебе недоступна данная команда!')
 
 
 # ловим ответ и сохраняем данные
 async def save_changes(message: Message, state: FSMContext):
-    with open('rings_changes.txt', 'w') as file:
+    with open('../../rings_changes.txt', 'w') as file:
         file.write(message.photo[0].file_id)
 
     await message.reply('Изменения сохранены!')
@@ -45,9 +50,12 @@ async def cancel_changes(message: Message, state: FSMContext):
 
 # удаление изменений
 async def delete_changes(message: Message):
-    with open('rings_changes.txt', 'w') as file:
-        file.write('')
-    await message.answer('Изменения удалены!')
+    if message.from_user.id in admins:
+        with open('rings_changes.txt', 'w') as file:
+            file.write('')
+        await message.answer('Изменения удалены!')
+    else:
+        await message.answer('Тебе недоступна данная команда!')
 
 
 # регивстрация хэндлеров для импорта в bot.py
