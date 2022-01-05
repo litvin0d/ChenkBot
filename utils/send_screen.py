@@ -6,11 +6,11 @@ options.add_argument('--headless')
 options.add_argument('--disable-gpu')
 options.add_argument('--disable-dev-shm-usage')
 options.add_argument('--no-sandbox')
-driver = webdriver.Chrome(options=options)
+driver = webdriver.Chrome(executable_path=r'C:/Program Files (x86)/ChromeDriver/chromedriver.exe', options=options)
 
 
 # создание, отправка и последующее удаление скриншота
-async def send_screenshot(uid, url):
+async def send_screen(uid, url):
     import os
     from aiogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 

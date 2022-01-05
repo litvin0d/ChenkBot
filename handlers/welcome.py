@@ -1,18 +1,9 @@
-from aiogram.types import Message, ReplyKeyboardMarkup, KeyboardButton, ReplyKeyboardRemove
+from aiogram.types import Message
 
 from loader import dp
 from utils import database
 from data.config import admins
-
-# объявление клавиатуры
-menu = ReplyKeyboardMarkup(resize_keyboard=True, row_width=1)
-# создание кнопок
-couples = KeyboardButton('🗓 Расписание пар 🗓')
-bells = KeyboardButton('⏳ Расписание звонков ⏳')
-video = KeyboardButton('📸 ЧЭнК Онлайн 📸')
-about = KeyboardButton('✨ О боте ✨')
-# добавление кнопок в клавиатуру
-menu.add(couples, bells, video, about)
+from keyboards import menu, menu_adm
 
 
 # функция ответа на команду /start
@@ -27,25 +18,8 @@ async def welcome(message: Message):
                               'Группа ЧЭнКа в ТГ: @chenk_chat', reply_markup=menu)
 
     if message.from_user.id in admins:
-        menu_adm = ReplyKeyboardMarkup(resize_keyboard=True, row_width=1)
-        admin_panel = KeyboardButton('🤖 Панель админа 🤖')
-        menu_adm.add(couples, bells, admin_panel, video, about)
         await message.answer('Вам доступна панель админа!', reply_markup=menu_adm)
 
     # добавление пользователя в базу данных (если его там не было)
     user_data = [message.from_user.id, message.from_user.username, message.from_user.full_name]
     await database.db_add(user_data)
-
-
-# хэндлер кнопки назад, возвращающий главную клавиатуру
-@dp.message_handler(text='🔙 Назад 🔙')
-async def back(message: Message):
-    if message.text == '🔙 Назад 🔙':
-        if message.from_user.id not in admins:
-            await message.answer('Что-то ещё?', reply_markup=menu)
-
-        else:
-            menu_adm = ReplyKeyboardMarkup(resize_keyboard=True, row_width=1)
-            admin_panel = KeyboardButton('🤖 Панель админа 🤖')
-            menu_adm.add(couples, bells, admin_panel, video, about)
-            await message.answer('Что-то ещё?', reply_markup=menu_adm)

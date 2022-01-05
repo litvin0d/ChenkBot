@@ -1,33 +1,24 @@
-from aiogram.types import Message, ReplyKeyboardMarkup, KeyboardButton
+import json
+from aiogram.types import Message
 from aiogram.utils.exceptions import Throttled
 
 from loader import dp
-from data.links import course_4
-from utils.screenshot import send_screenshot
+from utils.send_screen import send_screen
+from keyboards import groups4, contents4
+
+# парсинг json файла со ссылками
+with open('data/links.json', 'r') as f:
+    links = json.load(f)
 
 
 @dp.message_handler(text=['4⃣ Четвёртый курс 4⃣'])
-async def fourth_year(message: Message):
+async def course_4(message: Message):
     if message.text == '4⃣ Четвёртый курс 4⃣':
-        groups = ReplyKeyboardMarkup(resize_keyboard=True, row_width=2)
-        gr1_18 = KeyboardButton('👷‍♂ ТТО 1-18 👷‍♂')
-        gr2_18 = KeyboardButton('👨‍🔧 ЭССиС 2-18 👨‍🔧')
-        gr3_18 = KeyboardButton('👨‍🔧 ЭП 3-18 👨‍🔧')
-        gr4_18 = KeyboardButton('👨‍🔧 ЭС 4-18 👨‍🔧')
-        gr5_18 = KeyboardButton('👨‍🔧 ЭП 5-18 👨‍🔧')
-        gr6_18 = KeyboardButton('👨‍💼 СА 6-18 👨‍💼')
-        gr7_18 = KeyboardButton('👨‍💻 ИСП 7-18 👨‍💻')
-        gr8_18 = KeyboardButton('👨‍💻 ИСП 8-18 👨‍💻')
-        back = KeyboardButton('🔙 Назад 🔙')
-        groups.add(gr1_18, gr2_18, gr3_18, gr4_18, gr5_18, gr6_18, gr7_18, gr8_18, back)
-        await message.answer('В какой ты группе?', reply_markup=groups)
+        await message.answer('В какой ты группе?', reply_markup=groups4)
 
 
-@dp.message_handler(text=['👷‍♂ ТТО 1-18 👷‍♂', '👨‍🔧 ЭССиС 2-18 👨‍🔧',
-                          '👨‍🔧 ЭП 3-18 👨‍🔧', '👨‍🔧 ЭС 4-18 👨‍🔧',
-                          '👨‍🔧 ЭП 5-18 👨‍🔧', '👨‍💼 СА 6-18 👨‍💼',
-                          '👨‍💻 ИСП 7-18 👨‍💻', '👨‍💻 ИСП 8-18 👨‍💻'])
-async def fourth_year(message: Message):
+@dp.message_handler(text=contents4)
+async def groups_4(message: Message):
     # реализация антифлуда в виде блоков try/except/else
     try:
         await dp.throttle(rate=3, key='group')
@@ -35,25 +26,25 @@ async def fourth_year(message: Message):
         return
     else:
         if message.text == '👷‍♂ ТТО 1-18 👷‍♂':
-            await send_screenshot(message.from_user.id, course_4[1])
+            await send_screen(message.from_user.id, links['course_4'][0])
 
         if message.text == '👨‍🔧 ЭССиС 2-18 👨‍🔧':
-            await send_screenshot(message.from_user.id, course_4[2])
+            await send_screen(message.from_user.id, links['course_4'][1])
 
         if message.text == '👨‍🔧 ЭП 3-18 👨‍🔧':
-            await send_screenshot(message.from_user.id, course_4[3])
+            await send_screen(message.from_user.id, links['course_4'][2])
 
         if message.text == '👨‍🔧 ЭС 4-18 👨‍🔧':
-            await send_screenshot(message.from_user.id, course_4[4])
+            await send_screen(message.from_user.id, links['course_4'][3])
 
         if message.text == '👨‍🔧 ЭП 5-18 👨‍🔧':
-            await send_screenshot(message.from_user.id, course_4[5])
+            await send_screen(message.from_user.id, links['course_4'][4])
 
         if message.text == '👨‍💼 СА 6-18 👨‍💼':
-            await send_screenshot(message.from_user.id, course_4[6])
+            await send_screen(message.from_user.id, links['course_4'][5])
 
         if message.text == '👨‍💻 ИСП 7-18 👨‍💻':
-            await send_screenshot(message.from_user.id, course_4[7])
+            await send_screen(message.from_user.id, links['course_4'][6])
 
         if message.text == '👨‍💻 ИСП 8-18 👨‍💻':
-            await send_screenshot(message.from_user.id, course_4[8])
+            await send_screen(message.from_user.id, links['course_4'][7])

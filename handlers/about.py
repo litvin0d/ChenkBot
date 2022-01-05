@@ -12,4 +12,5 @@ async def about(message: Message):
                              ''
                              'Создатель: @litvinod\n'
                              'Группа ЧЭнКа в ТГ: @chenk_chat\n\n'
+                             ''
                              'Исходный код: https://github.com/litvin0d/ChenkBot')

@@ -6,7 +6,7 @@ from loader import bot, dp
 
 
 @dp.message_handler(text=['⏳ Расписание звонков ⏳'])
-async def rings(message: Message):
+async def rings_schedule(message: Message):
     # реализация антифлуда в виде блоков try/except/else
     try:
         await dp.throttle(rate=3, key='rings')
@@ -15,7 +15,7 @@ async def rings(message: Message):
     else:
         if message.text == '⏳ Расписание звонков ⏳':
             # проверка на наличие изменений
-            with open('../rings_changes.txt', 'r') as file:
+            with open('rings_changes.txt', 'r') as file:
                 photo_id = file.read()
                 if photo_id == '':
                     await bot.send_photo(message.chat.id, open('img/monday_friday.jpeg', 'rb'), 'Понедельник-пятница.')

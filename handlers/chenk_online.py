@@ -1,10 +1,7 @@
-from aiogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton
+from aiogram.types import Message
 
 from loader import dp
-
-link_kb = InlineKeyboardMarkup(row_width=1)
-link_btn = InlineKeyboardButton(text='ЧЭнК Онлайн', url='https://chenk.ru/ru/life/chenk-onlayn.php')
-link_kb.add(link_btn)
+from keyboards import link_kb
 
 
 @dp.message_handler(text='📸 ЧЭнК Онлайн 📸')

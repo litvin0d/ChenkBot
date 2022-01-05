@@ -5,7 +5,9 @@
 /__pycache__
 /data/__pycache__
 /handlers/__pycache__
+/handlers/admin_panel/__pycache__
 /handlers/courses/__pycache__
+/keyboards/__pycache__
 /utils/__pycache__
 /venv
 

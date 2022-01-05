@@ -1,33 +1,24 @@
-from aiogram.types import Message, ReplyKeyboardMarkup, KeyboardButton
+import json
+from aiogram.types import Message
 from aiogram.utils.exceptions import Throttled
 
 from loader import dp
-from data.links import course_3
-from utils.screenshot import send_screenshot
+from utils.send_screen import send_screen
+from keyboards import groups3, contents3
+
+# парсинг json файла со ссылками
+with open('data/links.json', 'r') as f:
+    links = json.load(f)
 
 
 @dp.message_handler(text=['3⃣ Третий курс 3⃣'])
-async def third_course(message: Message):
+async def course_3(message: Message):
     if message.text == '3⃣ Третий курс 3⃣':
-        groups = ReplyKeyboardMarkup(resize_keyboard=True, row_width=2)
-        gr1_19 = KeyboardButton('👷‍♂ ТТО 1-19 👷‍♂')
-        gr2_19 = KeyboardButton('👨‍🔧 ЭССиС 2-19 👨‍🔧')
-        gr3_19 = KeyboardButton('👨‍🔧 ЭССиС 3-19 👨‍🔧')
-        gr4_19 = KeyboardButton('👨‍🔧 ЭС 4-19 👨‍🔧')
-        gr5_19 = KeyboardButton('👨‍🔧 ЭП 5-19 👨‍🔧')
-        gr6_19 = KeyboardButton('👨‍💼 СА 6-19 👨‍💼')
-        gr7_19 = KeyboardButton('👨‍💻 ИСП 7-19 👨‍💻')
-        gr8_19 = KeyboardButton('👨‍💻 ИСП 8-19 👨‍💻')
-        back = KeyboardButton('🔙 Назад 🔙')
-        groups.add(gr1_19, gr2_19, gr3_19, gr4_19, gr5_19, gr6_19, gr7_19, gr8_19, back)
-        await message.answer('В какой ты группе?', reply_markup=groups)
+        await message.answer('В какой ты группе?', reply_markup=groups3)
 
 
-@dp.message_handler(text=['👷‍♂ ТТО 1-19 👷‍♂', '👨‍🔧 ЭССиС 2-19 👨‍🔧',
-                          '👨‍🔧 ЭССиС 3-19 👨‍🔧', '👨‍🔧 ЭС 4-19 👨‍🔧',
-                          '👨‍🔧 ЭП 5-19 👨‍🔧', '👨‍💼 СА 6-19 👨‍💼',
-                          '👨‍💻 ИСП 7-19 👨‍💻', '👨‍💻 ИСП 8-19 👨‍💻'])
-async def third_groups(message: Message):
+@dp.message_handler(text=contents3)
+async def groups_3(message: Message):
     # реализация антифлуда в виде блоков try/except/else
     try:
         await dp.throttle(rate=3, key='group')
@@ -35,25 +26,25 @@ async def third_groups(message: Message):
         return
     else:
         if message.text == '👷‍♂ ТТО 1-19 👷‍♂':
-            await send_screenshot(message.from_user.id, course_3[1])
+            await send_screen(message.from_user.id, links['course_3'][0])
 
         if message.text == '👨‍🔧 ЭССиС 2-19 👨‍🔧':
-            await send_screenshot(message.from_user.id, course_3[2])
+            await send_screen(message.from_user.id, links['course_3'][1])
 
         if message.text == '👨‍🔧 ЭССиС 3-19 👨‍🔧':
-            await send_screenshot(message.from_user.id, course_3[3])
+            await send_screen(message.from_user.id, links['course_3'][2])
 
         if message.text == '👨‍🔧 ЭС 4-19 👨‍🔧':
-            await send_screenshot(message.from_user.id, course_3[4])
+            await send_screen(message.from_user.id, links['course_3'][3])
 
         if message.text == '👨‍🔧 ЭП 5-19 👨‍🔧':
-            await send_screenshot(message.from_user.id, course_3[5])
+            await send_screen(message.from_user.id, links['course_3'][4])
 
         if message.text == '👨‍💼 СА 6-19 👨‍💼':
-            await send_screenshot(message.from_user.id, course_3[6])
+            await send_screen(message.from_user.id, links['course_3'][5])
 
         if message.text == '👨‍💻 ИСП 7-19 👨‍💻':
-            await send_screenshot(message.from_user.id, course_3[7])
+            await send_screen(message.from_user.id, links['course_3'][6])
 
         if message.text == '👨‍💻 ИСП 8-19 👨‍💻':
-            await send_screenshot(message.from_user.id, course_3[8])
+            await send_screen(message.from_user.id, links['course_3'][7])

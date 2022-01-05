@@ -1,12 +1,7 @@
-from aiogram.types import Message, ReplyKeyboardMarkup, KeyboardButton
+from aiogram.types import Message
 
 from loader import dp
-
-panel = ReplyKeyboardMarkup(resize_keyboard=True, row_width=1)
-rings_changes = KeyboardButton('📝 Изменения в расп. звонков 📝')
-users_num = KeyboardButton('👥 Количество пользователей 👥')
-back = KeyboardButton('🔙 Назад 🔙')
-panel.add(rings_changes, users_num, back)
+from keyboards import panel
 
 
 @dp.message_handler(text='🤖 Панель админа 🤖')
