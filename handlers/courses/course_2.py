@@ -18,28 +18,6 @@ async def course_2(message: Message):
         await message.answer('В какой ты группе?', reply_markup=groups2)
 
 
-# @dp.message_handler(text=['👷‍♂ ТТО 1-20 👷‍♂', '👨‍🔧 ЭССиС 2-20 👨‍🔧',
-#                           '👨‍🔧 ЭССиС 3-20 👨‍🔧', '👨‍🔧 ЭС 4-20 👨‍🔧',
-#                           '👨‍🔧 ЭП 5-20 👨‍🔧', '👨‍💼 СА 6-20 👨‍💼',
-#                           '👨‍💻 ИСП 7-20 👨‍💻', '⭐ ИСП 8-20 ⭐'])
-# async def load(message: Message):
-#     if message.text == '⭐ ИСП 8-20 ⭐':
-#         # редактирование сообщения
-#         await message.answer('<i>Секунду.</i>')
-#         load = os.path.isfile(f'{message.from_user.id}.png')
-#         while not load:
-#             await bot.edit_message_text(chat_id=message.chat.id, message_id=(message.message_id + 1),
-#                                         text='<i>Секунду..</i>')
-#             # sleep(.25)
-#             await bot.edit_message_text(chat_id=message.chat.id, message_id=(message.message_id + 1),
-#                                         text='<i>Секунду...</i>')
-#             # sleep(.25)
-#             await bot.edit_message_text(chat_id=message.chat.id, message_id=(message.message_id + 1),
-#                                         text='<i>Секунду.</i>')
-#             # sleep(.25)
-#         await bot.delete_message(chat_id=message.chat.id, message_id=(message.message_id + 1))
-
-
 @dp.message_handler(text=contents2)
 async def groups_2(message: Message):
     # реализация антифлуда в виде блоков try/except/else

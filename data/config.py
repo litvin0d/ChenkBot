@@ -1,5 +1,9 @@
-# файл с необходимыми данными для запуска бота
-# токен вводить в виде строки
+from environs import Env
 
-TOKEN = '1947770133:AAF80tS7f6v8hbsyO1kAry_0m5q8NhqkKxo'
-admins = [424157124]
+env = Env()
+env.read_env()
+
+TOKEN = env.str('TOKEN')
+admins = env.list('ADMINS')
+for i, elem in enumerate(admins):
+    admins[i] = int(elem)
