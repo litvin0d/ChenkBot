@@ -1,7 +1,7 @@
 import sqlite3 as sql
 
 
-# подключение к базе данных или её создание
+# connecting to or creating a database
 async def db_start():
     global connect, cursor
     connect = sql.connect('data/users.db')
@@ -18,7 +18,7 @@ async def db_start():
     connect.commit()
 
 
-# добавление данных в базу
+# adding a user to the database if he was not there
 async def db_add(user_data):
     uid = user_data[0]
     cursor.execute(f'SELECT id FROM users WHERE id = {uid}')
@@ -28,14 +28,14 @@ async def db_add(user_data):
         connect.commit()
 
 
-# количество записей в базе
+# number of users in the database
 async def db_users_num():
     cursor.execute('SELECT Count(*) FROM users')
     users_num = cursor.fetchone()
     return users_num[0]
 
 
-# возвращение всех id в виде массива
+# returning all id's as an array
 async def db_users_id():
     cursor.execute('SELECT id FROM users')
     users_id = cursor.fetchall()

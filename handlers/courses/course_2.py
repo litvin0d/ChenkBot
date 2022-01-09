@@ -6,7 +6,7 @@ from loader import dp
 from utils.send_screen import send_screen
 from keyboards import groups2, contents2
 
-# парсинг json файла со ссылками
+# parsing json file with links
 with open('data/links.json', 'r') as f:
     links = json.load(f)
     f.close()
@@ -20,7 +20,7 @@ async def course_2(message: Message):
 
 @dp.message_handler(text=contents2)
 async def groups_2(message: Message):
-    # реализация антифлуда в виде блоков try/except/else
+    # anti-flood implementation in form of try/except/else
     try:
         await dp.throttle(rate=3, key='group')
     except Throttled:

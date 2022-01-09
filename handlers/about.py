@@ -3,6 +3,7 @@ from aiogram.types import Message
 from loader import dp
 
 
+# about bot message
 @dp.message_handler(text='✨ О боте ✨')
 async def about(message: Message):
     if message.text == '✨ О боте ✨':

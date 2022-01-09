@@ -1,6 +1,6 @@
 from aiogram.types import ReplyKeyboardMarkup, KeyboardButton
 
-# клавиатура выбора курса
+# course selection keyboard
 courses = ReplyKeyboardMarkup(resize_keyboard=True, row_width=1)
 first_grade = KeyboardButton('1⃣ Первый курс 1⃣')
 second_grade = KeyboardButton('2⃣ Второй курс 2⃣')

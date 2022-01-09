@@ -1,6 +1,6 @@
 from selenium import webdriver
 
-# настройка браузера для работы в автономном режиме
+# configuring the browser to work in headless mode
 options = webdriver.ChromeOptions()
 options.add_argument('--headless')
 options.add_argument('--disable-gpu')
@@ -9,7 +9,7 @@ options.add_argument('--no-sandbox')
 driver = webdriver.Chrome(executable_path=r'C:/Program Files (x86)/ChromeDriver/chromedriver.exe', options=options)
 
 
-# создание, отправка и последующее удаление скриншота
+# creating, sending and then deleting a screenshot
 async def send_screen(chat_id, url):
     import os
     from aiogram.types import InlineKeyboardMarkup, InlineKeyboardButton
@@ -21,23 +21,22 @@ async def send_screen(chat_id, url):
 
     driver.get(url)
 
-    # определение размеров скриншота
+    # determining the size of the screenshot
     driver.set_window_size(1000, 0)
     size = driver.execute_script('return document.documentElement.scrollHeight')
     driver.set_window_size(1000, size)
 
     await loading_message.edit_text('<i>Загрузка..</i>')
 
-    # создание inline-клавиатуры для прикрепления под последующей фотографией
+    # creating an inline keyboard for attaching under a photo
     switch_kb = InlineKeyboardMarkup()
     prev_btn = InlineKeyboardButton(text='Открыть в браузере', url=url)
     switch_kb.add(prev_btn)
 
     await loading_message.edit_text('<i>Загрузка...</i>')
 
-    # сохранение, отправка и удаление
-    photo_path = str(chat_id) + '.png'
-    driver.save_screenshot(photo_path)
-    await loading_message.delete()  # удаление сообщения о загрузке
-    await bot.send_photo(chat_id, photo=open(photo_path, 'rb'), reply_markup=switch_kb)
-    os.remove(photo_path)
+    photo_path = f'img/{str(chat_id)}.png'  # creating a path for a screenshot
+    driver.save_screenshot(photo_path)  # saving a screenshot
+    await loading_message.delete()  # delete loading message
+    await bot.send_photo(chat_id, photo=open(photo_path, 'rb'), reply_markup=switch_kb)  # sending a screenshot
+    os.remove(photo_path)  # deleting a screenshot

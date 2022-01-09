@@ -3,11 +3,11 @@ from aiogram.dispatcher import FSMContext
 from aiogram.dispatcher.filters import Text
 from aiogram.dispatcher.filters.state import StatesGroup, State
 
-from data.config import admins
+from data.config import ADMINS
 from loader import dp
 
 
-# панель управление изменениями
+# control panel for changes in rings schedule
 @dp.message_handler(text='📝 Изменения в расп. звонков 📝')
 async def rings_changes(message: Message):
     if message.text == '📝 Изменения в расп. звонков 📝':
@@ -17,22 +17,22 @@ async def rings_changes(message: Message):
                              '/delete - удалить изменения')
 
 
-# объявление машины состояний
+# state machine declaration
 class FSMAdmin(StatesGroup):
     photo = State()
 
 
-# активация машины состояний
+# state machine activation
 @dp.message_handler(commands='upload', state=None)
 async def upload_changes(message: Message):
-    if message.from_user.id in admins:
+    if message.from_user.id in ADMINS:
         await FSMAdmin.photo.set()
         await message.answer('Отправь фото изменений:')
     else:
         await message.answer('Тебе недоступна данная команда!')
 
 
-# ловим ответ и сохраняем данные
+# catching the answer and save the data
 @dp.message_handler(content_types=['photo'], state=FSMAdmin.photo)
 async def save_changes(message: Message, state: FSMContext):
     with open('data/rings_changes.txt', 'w') as file:
@@ -42,7 +42,7 @@ async def save_changes(message: Message, state: FSMContext):
     await state.finish()
 
 
-# выход из состояний
+# exit from states
 @dp.message_handler(state="*", commands='cancel')
 @dp.message_handler(Text(equals='cancel', ignore_case=True), state="*")
 async def cancel_changes(message: Message, state: FSMContext):
@@ -53,10 +53,10 @@ async def cancel_changes(message: Message, state: FSMContext):
     await state.finish()
 
 
-# удаление изменений
+# deleting changes
 @dp.message_handler(commands='delete')
 async def delete_changes(message: Message):
-    if message.from_user.id in admins:
+    if message.from_user.id in ADMINS:
         with open('data/rings_changes.txt', 'w') as file:
             file.write('')
         await message.answer('Изменения удалены!')

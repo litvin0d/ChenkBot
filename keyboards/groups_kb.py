@@ -1,8 +1,8 @@
 from aiogram.types import ReplyKeyboardMarkup, KeyboardButton
 
-# клавиатуры выбора группы для каждого курса
+# group selection keyboards for each course
 
-# 1 курс
+# first course
 groups1 = ReplyKeyboardMarkup(resize_keyboard=True, row_width=2)
 gr1_21 = KeyboardButton('👷‍♂ ТТО 1-21 👷‍♂')
 gr2_21 = KeyboardButton('👨‍🔧 ЭССиС 2-21 👨‍🔧')
@@ -22,7 +22,7 @@ contents1 = ['👷‍♂ ТТО 1-21 👷‍♂', '👨‍🔧 ЭССиС 2-21 �
              '👨‍💻 ИСП 7-21 👨‍💻', '👨‍💻 ИСП 8-21 👨‍💻',
              '👨‍💻 ИСП 9-21 👨‍💻']
 
-# 2 курс
+# second course
 groups2 = ReplyKeyboardMarkup(resize_keyboard=True, row_width=2)
 gr1_20 = KeyboardButton('👷‍♂ ТТО 1-20 👷‍♂')
 gr2_20 = KeyboardButton('👨‍🔧 ЭССиС 2-20 👨‍🔧')
@@ -32,7 +32,6 @@ gr5_20 = KeyboardButton('👨‍🔧 ЭП 5-20 👨‍🔧')
 gr6_20 = KeyboardButton('👨‍💼 СА 6-20 👨‍💼')
 gr7_20 = KeyboardButton('👨‍💻 ИСП 7-20 👨‍💻')
 gr8_20 = KeyboardButton('⭐ ИСП 8-20 ⭐')
-back = KeyboardButton('🔙 Назад 🔙')
 groups2.add(gr1_20, gr2_20, gr3_20, gr4_20, gr5_20, gr6_20, gr7_20, gr8_20, back)
 
 contents2 = ['👷‍♂ ТТО 1-20 👷‍♂', '👨‍🔧 ЭССиС 2-20 👨‍🔧',
@@ -40,7 +39,7 @@ contents2 = ['👷‍♂ ТТО 1-20 👷‍♂', '👨‍🔧 ЭССиС 2-20 �
              '👨‍🔧 ЭП 5-20 👨‍🔧', '👨‍💼 СА 6-20 👨‍💼',
              '👨‍💻 ИСП 7-20 👨‍💻', '⭐ ИСП 8-20 ⭐']
 
-# 3 курс
+# third course
 groups3 = ReplyKeyboardMarkup(resize_keyboard=True, row_width=2)
 gr1_19 = KeyboardButton('👷‍♂ ТТО 1-19 👷‍♂')
 gr2_19 = KeyboardButton('👨‍🔧 ЭССиС 2-19 👨‍🔧')
@@ -50,7 +49,6 @@ gr5_19 = KeyboardButton('👨‍🔧 ЭП 5-19 👨‍🔧')
 gr6_19 = KeyboardButton('👨‍💼 СА 6-19 👨‍💼')
 gr7_19 = KeyboardButton('👨‍💻 ИСП 7-19 👨‍💻')
 gr8_19 = KeyboardButton('👨‍💻 ИСП 8-19 👨‍💻')
-back = KeyboardButton('🔙 Назад 🔙')
 groups3.add(gr1_19, gr2_19, gr3_19, gr4_19, gr5_19, gr6_19, gr7_19, gr8_19, back)
 
 contents3 = ['👷‍♂ ТТО 1-19 👷‍♂', '👨‍🔧 ЭССиС 2-19 👨‍🔧',
@@ -58,7 +56,7 @@ contents3 = ['👷‍♂ ТТО 1-19 👷‍♂', '👨‍🔧 ЭССиС 2-19 �
              '👨‍🔧 ЭП 5-19 👨‍🔧', '👨‍💼 СА 6-19 👨‍💼',
              '👨‍💻 ИСП 7-19 👨‍💻', '👨‍💻 ИСП 8-19 👨‍💻']
 
-# 4 курс
+# fourth course
 groups4 = ReplyKeyboardMarkup(resize_keyboard=True, row_width=2)
 gr1_18 = KeyboardButton('👷‍♂ ТТО 1-18 👷‍♂')
 gr2_18 = KeyboardButton('👨‍🔧 ЭССиС 2-18 👨‍🔧')
@@ -68,7 +66,6 @@ gr5_18 = KeyboardButton('👨‍🔧 ЭП 5-18 👨‍🔧')
 gr6_18 = KeyboardButton('👨‍💼 СА 6-18 👨‍💼')
 gr7_18 = KeyboardButton('👨‍💻 ИСП 7-18 👨‍💻')
 gr8_18 = KeyboardButton('👨‍💻 ИСП 8-18 👨‍💻')
-back = KeyboardButton('🔙 Назад 🔙')
 groups4.add(gr1_18, gr2_18, gr3_18, gr4_18, gr5_18, gr6_18, gr7_18, gr8_18, back)
 
 contents4 = ['👷‍♂ ТТО 1-18 👷‍♂', '👨‍🔧 ЭССиС 2-18 👨‍🔧',
