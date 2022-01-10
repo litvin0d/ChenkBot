@@ -12,7 +12,7 @@ async def on_startup(dp: Dispatcher):
     await bot.set_webhook(WEBHOOK_URL)
 
     for admin in ADMINS:
-        await dp.bot.send_message(admin, '[bot_start]')
+        await dp.bot.send_message(admin, 'Bot started! [dev]')
     await database.db_start()
 
 
@@ -20,6 +20,6 @@ async def on_shutdown(dp: Dispatcher):
     logging.warning('Shutting down...')
 
     for admin in ADMINS:
-        await dp.bot.send_message(admin, '[bot_stopped]')
+        await dp.bot.send_message(admin, 'Bot stopped! [dev]')
 
     await bot.delete_webhook()

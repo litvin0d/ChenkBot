@@ -1,4 +1,3 @@
-# from aiogram import executor
 import logging
 from aiogram.utils.executor import start_webhook
 
@@ -13,14 +12,7 @@ middlewares.setup(dp)
 logging.basicConfig(level=logging.INFO)
 
 if __name__ == '__main__':
-    # # bot launch
-    # executor.start_polling(
-    #     dispatcher=dp,
-    #     on_startup=on_startup,
-    #     on_shutdown=on_shutdown,
-    #     skip_updates=True,
-    # )
-
+    # bot launch
     start_webhook(
         dispatcher=dp,
         webhook_path=WEBHOOK_PATH,
