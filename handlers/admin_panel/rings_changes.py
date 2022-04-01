@@ -3,7 +3,7 @@ from aiogram.dispatcher import FSMContext
 from aiogram.dispatcher.filters import Text
 from aiogram.dispatcher.filters.state import StatesGroup, State
 
-from data.config import ADMINS
+from data.config import ADMINS, RINGS_CHANGES_PATH
 from loader import dp
 
 
@@ -57,7 +57,7 @@ async def cancel_changes(message: Message, state: FSMContext):
 @dp.message_handler(commands='delete')
 async def delete_changes(message: Message):
     if message.from_user.id in ADMINS:
-        with open('data/rings_changes.txt', 'w') as file:
+        with open(RINGS_CHANGES_PATH, 'w') as file:
             file.write('')
         await message.answer('Изменения удалены!')
     else:

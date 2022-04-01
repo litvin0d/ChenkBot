@@ -1,12 +1,14 @@
 from selenium import webdriver
 
+from data.config import WEBDRIVER_PATH, SCREEN_PATH
+
 # configuring the browser to work in headless mode
 options = webdriver.ChromeOptions()
 options.add_argument('--headless')
 options.add_argument('--disable-gpu')
 options.add_argument('--disable-dev-shm-usage')
 options.add_argument('--no-sandbox')
-driver = webdriver.Chrome(executable_path=r'C:/Program Files (x86)/ChromeDriver/chromedriver.exe', options=options)
+driver = webdriver.Chrome(executable_path=WEBDRIVER_PATH, options=options)
 
 
 # creating, sending and then deleting a screenshot
@@ -22,13 +24,13 @@ async def send_screen(chat_id, url):
     driver.get(url)
 
     # determining the size of the screenshot
-    driver.set_window_size(1000, 0)
+    driver.set_window_size(1080, 0)
     size = driver.execute_script('return document.documentElement.scrollHeight')
-    driver.set_window_size(1000, size)
+    driver.set_window_size(1080, size)
 
     await loading_message.edit_text('<i>Загрузка..</i>')
 
-    photo_path = f'img/{str(chat_id)}.png'  # creating a path for a screenshot
+    photo_path = SCREEN_PATH + str(chat_id) + '.png'  # creating a path for a screenshot
     driver.save_screenshot(photo_path)  # saving a screenshot
     await loading_message.edit_text('<i>Загрузка...</i>')
     await loading_message.delete()  # delete loading message

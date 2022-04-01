@@ -3,6 +3,7 @@ from aiogram.types import Message
 from aiogram.utils.exceptions import Throttled
 
 from loader import bot, dp
+from data.config import RINGS_PATH, RINGS_CHANGES_PATH
 
 
 @dp.message_handler(text=['⏳ Расписание звонков ⏳'])
@@ -15,14 +16,14 @@ async def rings_timetable(message: Message):
     else:
         if message.text == '⏳ Расписание звонков ⏳':
             # checking for rings_changes.txt file
-            if not os.path.isfile('data/rings_changes.txt'):
-                open('data/rings_changes.txt', 'w').close()
+            if not os.path.isfile(RINGS_CHANGES_PATH):
+                open(RINGS_CHANGES_PATH, 'w').close()
 
             # checking for changes
-            with open('data/rings_changes.txt', 'r') as file:
+            with open(RINGS_CHANGES_PATH, 'r') as file:
                 photo_id = file.read()
                 if photo_id == '':
-                    msg = await bot.send_photo(message.chat.id, open('img/rings_tb.jpeg', 'rb'), 'Крутилин лох.')
+                    msg = await bot.send_photo(message.chat.id, open(RINGS_PATH, 'rb'), 'Крутилин лох.')
                     await msg.edit_caption('')
                 else:
                     await bot.send_photo(message.chat.id, photo_id, '<i>Расписание звонков изменено.</i>')
