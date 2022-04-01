@@ -10,7 +10,6 @@ from keyboards import menu, menu_adm
 async def back(message: Message):
     if message.text == '🔙 Назад 🔙':
         if message.from_user.id in ADMINS:
-            await message.answer('Что-то ещё?', reply_markup=menu)
             await message.answer('Что-то ещё?', reply_markup=menu_adm)
         else:
             await message.answer('Что-то ещё?', reply_markup=menu)
