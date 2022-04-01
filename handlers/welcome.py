@@ -14,8 +14,7 @@ async def welcome(message: Message):
                               'выбери свой курс и группу, бот пришлёт тебе фото '
                               'с расписанием. Так же ты можешь узнать расписание звонков '
                               'и получить ссылку на прямую трансляцию с камеры главного входа '
-                              'в ЧЭнК.\n'
-                              'Группа ЧЭнКа в ТГ: @chenk_chat', reply_markup=menu)
+                              'в ЧЭнК.\n', reply_markup=menu)
 
     if message.from_user.id in ADMINS:
         await message.answer('Вам доступна панель админа!', reply_markup=menu_adm)

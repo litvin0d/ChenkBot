@@ -12,6 +12,4 @@ async def about(message: Message):
                              'расписания – библиотека Selenium.\n\n'
                              ''
                              'Создатель: @litvinod\n'
-                             'Группа ЧЭнКа в ТГ: @chenk_chat\n\n'
-                             ''
                              'Исходный код: https://github.com/litvin0d/ChenkBot')

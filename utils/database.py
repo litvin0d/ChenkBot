@@ -1,10 +1,12 @@
 import sqlite3 as sql
 
+from data.config import DATABASE_PATH
+
 
 # connecting to or creating a database
 async def db_start():
     global connect, cursor
-    connect = sql.connect('data/users.db')
+    connect = sql.connect(DATABASE_PATH)
     cursor = connect.cursor()
 
     if connect:

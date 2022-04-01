@@ -5,10 +5,12 @@ from aiogram.utils.exceptions import Throttled
 from loader import dp
 from utils.send_screen import send_screen
 from keyboards import groups3, contents3
+from data.config import LINKS_PATH
 
 # parsing json file with links
-with open('data/links.json', 'r') as f:
+with open(LINKS_PATH, 'r') as f:
     links = json.load(f)
+    f.close()
 
 
 @dp.message_handler(text=['3⃣ Третий курс 3⃣'])
